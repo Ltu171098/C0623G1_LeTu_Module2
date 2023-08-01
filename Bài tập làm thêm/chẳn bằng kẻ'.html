@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Hàm nhập mảng từ bàn phím với độ dài n
+    function nhapMang(n) { let mang = [];
+    for (let i = 0; i < n; i++) {
+        let giaTri = parseInt(prompt(`Nhập giá trị của phần tử thứ ${i + 1}:`));
+        mang.push(giaTri);
+    }
+    return mang;
+    }
+
+    // Hàm hiển thị mảng
+    function hienThiMang(mang) {
+        console.log("Mảng sau khi thêm mới các phần tử:");
+        console.log(mang);
+    }
+
+    // Hàm kiểm tra mảng và hiển thị thông báo
+    function kiemTraMang(mang) {
+        let soLuongChan = 0;
+        let soLuongLe = 0;
+
+        for (let i = 0; i < mang.length; i++) {
+            if (mang[i] % 2 === 0) {
+                soLuongChan++;
+            } else {
+                soLuongLe++;
+            }
+        }
+
+        if (soLuongChan === soLuongLe) {
+            console.log("OK");
+        } else {
+            console.log("NO");
+        }
+    }
+
+    // Nhập độ dài mảng từ bàn phím
+    let n = parseInt(prompt("Nhập độ dài của mảng n:"));
+
+    // Nhập mảng từ bàn phím
+    let mang = nhapMang(n);
+
+    // Hiển thị mảng sau khi thêm mới các phần tử
+    hienThiMang(mang);
+
+    // Kiểm tra mảng và hiển thị thông báo
+    kiemTraMang(mang);
+</script>
+</body>
+</html>

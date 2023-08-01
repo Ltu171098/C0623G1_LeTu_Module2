@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính đường chéo chính và phụ</title>
+</head>
+<body>
+<script>
+    // Hàm nhập mảng hai chiều từ bàn phím với kích thước m x n
+    function nhapMangHaiChieu(m, n) {
+        let mang = [];
+        for (let i = 0; i < m; i++) {
+            let hang = [];
+            for (let j = 0; j < n; j++) {
+                let giaTri = parseInt(prompt(`Nhập giá trị của phần tử ở hàng ${i + 1} cột ${j + 1}`));
+                hang.push(giaTri);
+            }
+            mang.push(hang);
+        }
+        return mang;
+    }
+
+    // Hàm hiển thị mảng hai chiều
+    function hienThiMangHaiChieu(mang) {
+        for (let i = 0; i < mang.length; i++) {
+            let hang = "";
+            for (let j = 0; j < mang[i].length; j++) {
+                hang += mang[i][j] + " ";
+            }
+            console.log(hang);
+        }
+    }
+
+    //hàm tính tổng các phần tử trên hai đường chéo
+    function tinhTongDuongCheo(mang) {
+        let tongCheoChinh = 0;
+        let tongCheoPhu = 0;
+        for (let i = 0; i < mang.length; i++) {
+            tongCheoChinh += mang[i][i];
+            tongCheoPhu += mang[i][mang[i].length - i - 1];
+        }
+        return [tongCheoChinh, tongCheoPhu];
+    }
+
+    // Nhập kích thước m x n từ bàn phím
+    let m = parseInt(prompt("Nhập số hàng m:"));
+    let n = parseInt(prompt("Nhập số cột n:"));
+
+    // Nhập mảng hai chiều từ bàn phím
+    let mangHaiChieu = nhapMangHaiChieu(m, n);
+
+    // Hiển thị mảng hai chiều sau khi thêm mới các phần tử
+    console.log("Mảng sau khi thêm mới các phần tử:");
+    hienThiMangHaiChieu(mangHaiChieu);
+
+    // Tính tổng các phần tử trên hai đường chéo
+    let [tongCheoChinh, tongCheoPhu] = tinhTongDuongCheo(mangHaiChieu);
+    console.log("Tổng các phần tử trên đường chéo chính:", tongCheoChinh);
+    console.log("Tổng các phần tử trên đường chéo phụ:", tongCheoPhu);
+    // Hàm nhập mảng từ bàn phím với độ dài n
+    function nhapMang(n) { let mang = [];
+        for (let i = 0; i < n; i++) {
+            let giaTri = parseInt(prompt(`Nhập giá trị của phần tử thứ ${i + 1}:`));
+            mang.push(giaTri);
+        }
+        return mang;
+    }
+
+    // Hàm hiển thị mảng
+    function hienThiMang(mang) {
+        console.log("Mảng sau khi thêm mới các phần tử:");
+        console.log(mang);
+    }
+
+    // Hàm kiểm tra mảng và hiển thị thông báo
+    function kiemTraMang(mang) {
+        let soLuongChan = 0;
+        let soLuongLe = 0;
+
+        for (let i = 0; i < mang.length; i++) {
+            if (mang[i] % 2 === 0) {
+                soLuongChan++;
+            } else {
+                soLuongLe++;
+            }
+        }
+
+        if (soLuongChan === soLuongLe) {
+            console.log("OK");
+        } else {
+            console.log("NO");
+        }
+    }
+
+    // Nhập độ dài mảng từ bàn phím
+    let n = parseInt(prompt("Nhập độ dài của mảng n:"));
+
+    // Nhập mảng từ bàn phím
+    let mang = nhapMang(n);
+
+    // Hiển thị mảng sau khi thêm mới các phần tử
+    hienThiMang(mang);
+
+    // Kiểm tra mảng và hiển thị thông báo
+    kiemTraMang(mang);
+    let input = prompt("Nhập vào một chuỗi cần viết tắt:");
+    function createAbbreviation(str){
+        let words = str.split(" ");
+
+        if (words.length <= 1) {
+            return "Chuỗi chỉ có 1 từ nên không cần viết tắt";
+        }
+
+        let abbreviation = "";
+
+        for (let i = 0; i < words.length; i++) {
+            abbreviation += words[i][0].toUpperCase();
+        }
+
+        return abbreviation;
+    }
+    let string = prompt("Nhập xâu ký tự cần sửa: ");
+    let arr1 = string.split('');
+    let a = deleteSpaceAndUpperLower(arr1); //mảng có phần tử là từng ký tự
+    let c = a.split(' ') //chuyển chuỗi thành mảng có phần tử là từng từ
+    alert("Xâu đã chuẩn hóa: " + a);
+    alert("Ký tự dài nhất là: " + findMaxLength(c));
+
+    function deleteSpaceAndUpperLower(arr) {
+
+        for (let i = 0; i < arr.length; i++) { //viết thường hết mảng
+            arr[i] = arr[i].toLowerCase();
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === " " && arr[i + 1] === " ") { //xóa khảng trắng dư
+                arr.splice(i, 1);
+                i--;
+            }
+            if (arr[i] === " ") { //viết hoa chữ cái đầu
+                arr.splice(i + 1, 1, arr[i + 1].toUpperCase());
+            } else {
+                arr.splice(0, 1, arr[0].toUpperCase());
+            }
+        }
+        return arr.join('');
+    }
+    function findMaxLength(arr) {
+        debugger
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i].length > max.length) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+
+    console.log(createAbbreviation(input))
+</script>
+</body>
+</html>

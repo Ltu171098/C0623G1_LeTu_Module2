@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inputArray = prompt("NHập dãy số nguyên, mỗi số cách nhau bằng dấu phẩy:").split(",").map(Number);
+
+    function beautifulArray(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let leftSum = 0;
+            let rightSum = 0;
+            for (let j = 0; j < i ; j++) {
+                leftSum += arr[j];
+            }
+            for (let j = i + 1; j < arr.length; j++) {
+                rightSum += arr[j];
+            }
+            if (leftSum === rightSum){
+                return true;
+            }
+        }
+        return false;
+    }
+    let isBeautiful = beautifulArray(inputArray);
+    document.write(isBeautiful);
+
+</script>
+</body>
+</html>

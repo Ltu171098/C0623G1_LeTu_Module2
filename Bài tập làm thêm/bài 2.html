@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string1 = prompt("Nhập chuỗi ký tự thứ nhất:");
+    let string2 = prompt("Nhập chuỗi ký tự thứ hai");
+    let count = 0;
+    function checkCommonCharater(str1,str2){
+        for (let i = 0; i < str1.length; i++) {
+            for (let j = 0; j < str2.length; j++) {
+                if ( string1[i] === string2[j]){
+                    count++;
+                    break;
+                }
+
+            }
+        }
+        return count;
+    }
+    let commonCount = checkCommonCharater(string1,string2);
+    document.write("số ký tự chung là:" + commonCount);
+</script>
+</body>
+</html>

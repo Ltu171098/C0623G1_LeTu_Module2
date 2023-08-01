@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KIỂM TRA TẦN SỐ XUẤT KIỆN CỦA MẢNG SỐ NGUYÊN </title>
+</head>
+<body>
+<script>
+    let inputString = prompt("Nhập mảng số nguyên, các số cách nhau bằng dấu ", "");
+    let inputArray = inputString.split(",").map(Number);
+
+    function checkEqualFrequency(inputAraay) {
+        let frequencyCount = {}
+        if (inputAraay !== 2){
+            return false;
+        }
+        for (let i = 0; i < inputAraay.length; i++) {
+            let num = inputAraay[i];
+            if (!frequencyCount[num]) {
+                frequencyCount[num] = 1;
+            } else {
+                frequencyCount[num] += 1
+            }
+        }
+        let firstFrequency = frequencyCount[inputArray[0]];
+        for (let i = 0; i < inputArray.length; i++) {
+            let num = inputArray[i];
+            if (frequencyCount[num] !== firstFrequency) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    document.write(checkEqualFrequency(inputArray));
+</script>
+</body>
+</html>
